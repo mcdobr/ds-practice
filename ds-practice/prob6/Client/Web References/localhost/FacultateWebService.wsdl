@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="adaugaMaterie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nume" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="adaugaMaterieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="adaugaMaterieResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="adaugaStudent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nume" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="grupa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="adaugaStudentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="adaugaStudentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="adaugaNota">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nota" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="studentId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="materieId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="adaugaNotaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="returneazaNote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idMaterie" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="returneazaNoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="returneazaNoteResult" type="tns:ArrayOfKVPOfStudentInt32" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfKVPOfStudentInt32">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="KVPOfStudentInt32" type="tns:KVPOfStudentInt32" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="KVPOfStudentInt32">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="key" type="tns:Student" />
+          <s:element minOccurs="1" maxOccurs="1" name="value" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Student">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nume" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Grupa" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="returneazaStudenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="grupa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="returneazaStudentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="returneazaStudentiResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="adaugaMaterieSoapIn">
+    <wsdl:part name="parameters" element="tns:adaugaMaterie" />
+  </wsdl:message>
+  <wsdl:message name="adaugaMaterieSoapOut">
+    <wsdl:part name="parameters" element="tns:adaugaMaterieResponse" />
+  </wsdl:message>
+  <wsdl:message name="adaugaStudentSoapIn">
+    <wsdl:part name="parameters" element="tns:adaugaStudent" />
+  </wsdl:message>
+  <wsdl:message name="adaugaStudentSoapOut">
+    <wsdl:part name="parameters" element="tns:adaugaStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="adaugaNotaSoapIn">
+    <wsdl:part name="parameters" element="tns:adaugaNota" />
+  </wsdl:message>
+  <wsdl:message name="adaugaNotaSoapOut">
+    <wsdl:part name="parameters" element="tns:adaugaNotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="returneazaNoteSoapIn">
+    <wsdl:part name="parameters" element="tns:returneazaNote" />
+  </wsdl:message>
+  <wsdl:message name="returneazaNoteSoapOut">
+    <wsdl:part name="parameters" element="tns:returneazaNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="returneazaStudentiSoapIn">
+    <wsdl:part name="parameters" element="tns:returneazaStudenti" />
+  </wsdl:message>
+  <wsdl:message name="returneazaStudentiSoapOut">
+    <wsdl:part name="parameters" element="tns:returneazaStudentiResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FacultateWebServiceSoap">
+    <wsdl:operation name="adaugaMaterie">
+      <wsdl:input message="tns:adaugaMaterieSoapIn" />
+      <wsdl:output message="tns:adaugaMaterieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="adaugaStudent">
+      <wsdl:input message="tns:adaugaStudentSoapIn" />
+      <wsdl:output message="tns:adaugaStudentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="adaugaNota">
+      <wsdl:input message="tns:adaugaNotaSoapIn" />
+      <wsdl:output message="tns:adaugaNotaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="returneazaNote">
+      <wsdl:input message="tns:returneazaNoteSoapIn" />
+      <wsdl:output message="tns:returneazaNoteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="returneazaStudenti">
+      <wsdl:input message="tns:returneazaStudentiSoapIn" />
+      <wsdl:output message="tns:returneazaStudentiSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FacultateWebServiceSoap" type="tns:FacultateWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="adaugaMaterie">
+      <soap:operation soapAction="http://tempuri.org/adaugaMaterie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="adaugaStudent">
+      <soap:operation soapAction="http://tempuri.org/adaugaStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="adaugaNota">
+      <soap:operation soapAction="http://tempuri.org/adaugaNota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returneazaNote">
+      <soap:operation soapAction="http://tempuri.org/returneazaNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returneazaStudenti">
+      <soap:operation soapAction="http://tempuri.org/returneazaStudenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacultateWebServiceSoap12" type="tns:FacultateWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="adaugaMaterie">
+      <soap12:operation soapAction="http://tempuri.org/adaugaMaterie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="adaugaStudent">
+      <soap12:operation soapAction="http://tempuri.org/adaugaStudent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="adaugaNota">
+      <soap12:operation soapAction="http://tempuri.org/adaugaNota" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returneazaNote">
+      <soap12:operation soapAction="http://tempuri.org/returneazaNote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="returneazaStudenti">
+      <soap12:operation soapAction="http://tempuri.org/returneazaStudenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FacultateWebService">
+    <wsdl:port name="FacultateWebServiceSoap" binding="tns:FacultateWebServiceSoap">
+      <soap:address location="http://localhost:52066/FacultateWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacultateWebServiceSoap12" binding="tns:FacultateWebServiceSoap12">
+      <soap12:address location="http://localhost:52066/FacultateWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
